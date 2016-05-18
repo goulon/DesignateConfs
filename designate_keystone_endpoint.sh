@@ -2,7 +2,7 @@ get_id () {
     echo `$@ | awk '/ id / { print $4 }'`
 }
 
-SERVICE_ID=$(get_id keystone service-create --name=designate --type="dns" --description="DNS_Service")
+SERVICE_ID=$(get_id keystone service-create --name=designate --type="dns" --description="Designate Service")
 keystone endpoint-create \
     --region RegionOne \
     --service-id=$SERVICE_ID \
