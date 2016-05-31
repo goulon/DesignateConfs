@@ -1,0 +1,25 @@
+---
+- name: default
+  description: DevStack PowerDNS Pool
+  attributes: {}
+
+  ns_records:
+    - hostname: ns1.devstack.org.
+      priority: 1
+
+  nameservers:
+    - host: 172.16.21.5
+      port: 53
+
+  targets:
+    - type: powerdns
+      description: PowerDNS Database Cluster
+
+      masters:
+        - host: 172.16.21.5
+          port: 5354
+
+      options:
+        host: 172.16.21.5
+        port: 53
+        connection: 'mysql+pymysql://root:password@127.0.0.1/designate_pdns?charset=utf8'
